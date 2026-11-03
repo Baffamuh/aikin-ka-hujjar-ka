@@ -53,7 +53,7 @@ function Login() {
     <div className="grid min-h-screen place-items-center bg-hero px-4">
       <form onSubmit={submit} className="w-full max-w-sm space-y-4 rounded-2xl bg-card p-8 shadow-2xl">
         <div className="text-center">
-          <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary font-display text-sm font-bold text-gold">IMBA</span>
+          <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary font-display text-[11px] font-bold text-gold">IMBA</span>
           <h1 className="mt-3 text-2xl font-semibold">{noAdmin ? "Create admin account" : "Admin sign in"}</h1>
           {noAdmin && <p className="mt-1 text-xs text-muted-foreground">No administrator exists yet. The first account created becomes the administrator.</p>}
         </div>

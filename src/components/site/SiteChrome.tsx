@@ -61,7 +61,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4">
         <Link to="/" className="flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-primary font-display text-sm font-bold text-gold">IMBA</span>
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-primary font-display text-[11px] font-bold text-gold">IMBA</span>
           <span className="hidden leading-tight sm:block">
             <span className="block font-display text-base font-semibold">Hon. Ibrahim M. Baba</span>
             <span className="block text-xs text-muted-foreground">APC · Bauchi North</span>
