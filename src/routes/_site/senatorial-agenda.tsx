@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { HeartPulse, Droplets, Briefcase, Route as RoadIcon, Wheat, Users, Landmark, Sprout } from "lucide-react";
 import { PageHeader } from "@/components/site/SiteChrome";
+import { CAMPAIGN_POSTER } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { LGAS, projectsQuery } from "@/lib/site";
 
@@ -28,6 +29,16 @@ function Agenda() {
   return (
     <>
       <PageHeader eyebrow="Senatorial Agenda" title="Commitments to Bauchi North" intro="Clear, published promises — so that tomorrow, like yesterday, the work will be the proof." />
+      <section className="mx-auto max-w-7xl px-4 pt-14">
+        <div className="grid items-center gap-8 rounded-2xl border bg-card p-6 md:grid-cols-[320px_1fr]">
+          <img src={CAMPAIGN_POSTER} alt="IMBA for Senator 2027 campaign poster" className="w-full rounded-xl shadow-elegant" />
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">People’s Choice 2027</p>
+            <h2 className="mt-2 text-3xl font-semibold">Vote IMBA for Senator</h2>
+            <p className="mt-3 text-muted-foreground">Hon. Ibrahim Mohammed Baba is the APC candidate for Senator, Bauchi North. These are the promises he asks you to hold him to.</p>
+          </div>
+        </div>
+      </section>
       <section className="mx-auto max-w-7xl px-4 py-14">
         <div className="grid gap-6 md:grid-cols-2">
           {items.map((p) => {
