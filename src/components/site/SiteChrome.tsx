@@ -1,3 +1,4 @@
+import apcLogo from "@/assets/apc_logo.png.asset.json";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
