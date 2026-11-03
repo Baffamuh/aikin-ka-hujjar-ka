@@ -14,16 +14,285 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      complaints: {
+        Row: {
+          category: string
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          lga: string
+          message: string
+          phone: string
+          public_remarks: string | null
+          status: string
+          subject: string
+          tracking_code: string
+          updated_at: string
+          ward: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          lga: string
+          message: string
+          phone: string
+          public_remarks?: string | null
+          status?: string
+          subject: string
+          tracking_code: string
+          updated_at?: string
+          ward: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          lga?: string
+          message?: string
+          phone?: string
+          public_remarks?: string | null
+          status?: string
+          subject?: string
+          tracking_code?: string
+          updated_at?: string
+          ward?: string
+        }
+        Relationships: []
+      }
+      media_items: {
+        Row: {
+          caption: string | null
+          category: string
+          created_at: string
+          id: string
+          media_type: string
+          sort_order: number
+          title: string
+          url: string
+        }
+        Insert: {
+          caption?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          media_type?: string
+          sort_order?: number
+          title: string
+          url: string
+        }
+        Update: {
+          caption?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          media_type?: string
+          sort_order?: number
+          title?: string
+          url?: string
+        }
+        Relationships: []
+      }
+      news_articles: {
+        Row: {
+          body: string | null
+          category: string
+          created_at: string
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          published: boolean
+          published_at: string
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string | null
+          category?: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean
+          published_at?: string
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string | null
+          category?: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean
+          published_at?: string
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          category: string
+          created_at: string
+          featured: boolean
+          id: string
+          image_url: string | null
+          lga: string
+          location: string | null
+          scope: string | null
+          slug: string
+          sort_order: number
+          status: string
+          summary: string | null
+          tenure: string
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          lga?: string
+          location?: string | null
+          scope?: string | null
+          slug: string
+          sort_order?: number
+          status?: string
+          summary?: string | null
+          tenure?: string
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          lga?: string
+          location?: string | null
+          scope?: string | null
+          slug?: string
+          sort_order?: number
+          status?: string
+          summary?: string | null
+          tenure?: string
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          email: string
+          hero_subtitle: string
+          hero_title: string
+          id: number
+          office_address: string
+          office_hours: string
+          phone: string
+          slogan: string
+          updated_at: string
+        }
+        Insert: {
+          email?: string
+          hero_subtitle?: string
+          hero_title?: string
+          id?: number
+          office_address?: string
+          office_hours?: string
+          phone?: string
+          slogan?: string
+          updated_at?: string
+        }
+        Update: {
+          email?: string
+          hero_subtitle?: string
+          hero_title?: string
+          id?: number
+          office_address?: string
+          office_hours?: string
+          phone?: string
+          slogan?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      admin_exists: { Args: never; Returns: boolean }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      submit_complaint: {
+        Args: {
+          _category: string
+          _email: string
+          _full_name: string
+          _lga: string
+          _message: string
+          _phone: string
+          _subject: string
+          _ward: string
+        }
+        Returns: string
+      }
+      track_complaint: {
+        Args: { _code: string }
+        Returns: {
+          category: string
+          created_at: string
+          lga: string
+          public_remarks: string
+          status: string
+          subject: string
+          tracking_code: string
+          updated_at: string
+        }[]
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +419,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
