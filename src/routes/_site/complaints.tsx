@@ -60,7 +60,7 @@ function ComplaintForm() {
       _category: d.category, _subject: d.subject, _message: d.message,
     } as never);
     setBusy(false);
-    if (error) return toast.error("Could not submit. Please check your details and try again.");
+    if (error) { toast.error("Could not submit. Please check your details and try again."); return; }
     setCode(data as unknown as string);
     form.reset();
     window.scrollTo({ top: 0, behavior: "smooth" });

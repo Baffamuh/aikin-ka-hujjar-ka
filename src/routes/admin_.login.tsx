@@ -37,15 +37,15 @@ function Login() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     const r = creds.safeParse({ email, password });
-    if (!r.success) return toast.error(r.error.issues[0].message);
+    if (!r.success) { toast.error(r.error.issues[0]?.message ?? "Invalid input"); return; }
     setBusy(true);
     if (noAdmin) {
       const { error } = await supabase.auth.signUp({ ...r.data, options: { emailRedirectTo: window.location.origin + "/admin" } });
-      if (error) { setBusy(false); return toast.error(error.message); }
+      if (error) { setBusy(false); { toast.error(error.message); return; } }
     }
     const { error } = await supabase.auth.signInWithPassword(r.data);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     nav({ to: "/admin" });
   }
 

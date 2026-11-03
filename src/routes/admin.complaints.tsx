@@ -47,7 +47,7 @@ function Desk() {
     setBusy(true);
     const { error } = await supabase.from("complaints").update({ status, public_remarks: remarks.trim().slice(0, 4000) || null }).eq("id", sel1.id);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Complaint updated");
     setSel1(null);
     qc.invalidateQueries({ queryKey: ["admin"] });

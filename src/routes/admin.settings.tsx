@@ -31,9 +31,9 @@ function SettingsPage() {
   async function save() {
     setBusy(true);
     const patch = Object.fromEntries(FIELDS.map(({ k }) => [k, String(form[k] ?? "").trim().slice(0, 500)]));
-    const { error } = await supabase.from("site_settings").update(patch).eq("id", 1);
+    const { error } = await supabase.from("site_settings").update(patch as Partial<Settings>).eq("id", 1);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Settings saved");
     qc.invalidateQueries({ queryKey: ["settings"] });
   }

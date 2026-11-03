@@ -62,21 +62,21 @@ export function CrudManager({
 
   async function save() {
     if (!edit) return;
-    for (const f of fields) if (f.required && !String(edit[f.key] ?? "").trim()) return toast.error(`${f.label} is required`);
+    for (const f of fields) if (f.required && !String(edit[f.key] ?? "").trim()) { toast.error(`${f.label} is required`); return; }
     setBusy(true);
     const row: Record<string, unknown> = { ...edit };
-    if ("slug" in defaults && !row.slug) row.slug = slugify(String(row.title ?? "")) + "-" + Date.now().toString(36);
+    if ("slug" in defaults && !row['slug']) row['slug'] = slugify(String(row['title'] ?? "")) + "-" + Date.now().toString(36);
     for (const f of fields) {
       if (f.type === "number") row[f.key] = row[f.key] === "" || row[f.key] == null ? null : Number(row[f.key]);
       if (f.type !== "checkbox" && f.type !== "number" && row[f.key] === "") row[f.key] = null;
     }
-    const id = row.id as string | undefined;
-    delete row.id; delete row.created_at; delete row.updated_at;
+    const id = row['id'] as string | undefined;
+    delete row['id']; delete row['created_at']; delete row['updated_at'];
     const res = id
       ? await supabase.from(table).update(row as never).eq("id", id)
       : await supabase.from(table).insert(row as never);
     setBusy(false);
-    if (res.error) return toast.error(res.error.message);
+    if (res.error) { toast.error(res.error.message); return; }
     toast.success("Saved");
     setEdit(null);
     refresh();
@@ -85,7 +85,7 @@ export function CrudManager({
   async function remove(id: string) {
     if (!confirm("Delete this item permanently?")) return;
     const { error } = await supabase.from(table).delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Deleted");
     refresh();
   }
@@ -109,11 +109,11 @@ export function CrudManager({
           <tbody>
             {isLoading && <tr><td className="px-4 py-6 text-muted-foreground" colSpan={columns.length + 1}>Loading…</td></tr>}
             {list.map((r) => (
-              <tr key={r.id as string} className="border-t">
+              <tr key={r['id'] as string} className="border-t">
                 {columns.map((c) => <td key={c.key} className="max-w-xs truncate px-4 py-3">{typeof r[c.key] === "boolean" ? (r[c.key] ? "Yes" : "No") : String(r[c.key] ?? "—")}</td>)}
                 <td className="whitespace-nowrap px-4 py-3 text-right">
                   <Button size="icon" variant="ghost" aria-label="Edit" onClick={() => setEdit({ ...r })}><Pencil className="h-4 w-4" /></Button>
-                  <Button size="icon" variant="ghost" aria-label="Delete" onClick={() => remove(r.id as string)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                  <Button size="icon" variant="ghost" aria-label="Delete" onClick={() => remove(r['id'] as string)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
                 </td>
               </tr>
             ))}
