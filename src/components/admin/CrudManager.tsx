@@ -123,7 +123,7 @@ export function CrudManager({
 
       <Dialog open={!!edit} onOpenChange={(o) => !o && setEdit(null)}>
         <DialogContent className="max-h-[90vh] max-w-2xl overflow-y-auto">
-          <DialogHeader><DialogTitle>{edit?.id ? "Edit" : "New"} item</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle>{edit?.["id"] ? "Edit" : "New"} item</DialogTitle></DialogHeader>
           {edit && (
             <div className="grid gap-4 sm:grid-cols-2">
               {fields.map((f) => <FieldInput key={f.key} f={f} value={edit[f.key]} onChange={(v) => setEdit({ ...edit, [f.key]: v })} />)}
