@@ -5,7 +5,7 @@ import { ArrowRight, Megaphone, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ApcBadge, ContestBadge } from "@/components/site/SiteChrome";
 import { ProjectCard } from "@/components/site/ProjectCard";
-import { LGAS, PORTRAIT, POSTER, newsQuery, projectsQuery, settingsQuery } from "@/lib/site";
+import { LGAS, PORTRAIT, POSTER, CAMPAIGN_POSTER, newsQuery, projectsQuery, settingsQuery } from "@/lib/site";
 
 export const Route = createFileRoute("/_site/")({
   head: () => ({
@@ -55,7 +55,7 @@ function Home() {
           </div>
           <div className="relative mx-auto w-full max-w-sm">
             <div className="absolute -inset-3 rounded-[2rem] border-2 border-gold/50" />
-            <img src={PORTRAIT} alt="Hon. Ibrahim Mohammed Baba" className="relative aspect-[3/4] w-full rounded-[1.6rem] object-cover object-top shadow-2xl" />
+            <img src={CAMPAIGN_POSTER} alt="People’s Choice 2027: Vote Hon. Ibrahim Mohammed Baba (IMBA), APC, for Senator" className="relative w-full rounded-[1.6rem] shadow-2xl" />
           </div>
         </div>
       </section>
