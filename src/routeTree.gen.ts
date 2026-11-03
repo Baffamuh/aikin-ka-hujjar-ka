@@ -9,50 +9,441 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as SiteRouteImport } from './routes/_site'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as SiteIndexRouteImport } from './routes/_site/index'
+import { Route as SiteAboutRouteImport } from './routes/_site/about'
+import { Route as SiteComplaintsRouteImport } from './routes/_site/complaints'
+import { Route as SiteContactRouteImport } from './routes/_site/contact'
+import { Route as SiteMediaRouteImport } from './routes/_site/media'
+import { Route as SiteProjectsRouteImport } from './routes/_site/projects'
+import { Route as SiteSenatorialAgendaRouteImport } from './routes/_site/senatorial-agenda'
+import { Route as SiteTrackRouteImport } from './routes/_site/track'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminComplaintsRouteImport } from './routes/admin.complaints'
+import { Route as AdminMediaRouteImport } from './routes/admin.media'
+import { Route as AdminNewsRouteImport } from './routes/admin.news'
+import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminLoginRouteImport } from './routes/admin_.login'
+import { Route as SiteNewsIndexRouteImport } from './routes/_site/news.index'
+import { Route as SiteNewsSlugRouteImport } from './routes/_site/news.$slug'
 
-const IndexRoute = IndexRouteImport.update({
+const SiteRoute = SiteRouteImport.update({
+  id: '/_site',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteIndexRoute = SiteIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteAboutRoute = SiteAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteComplaintsRoute = SiteComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteContactRoute = SiteContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteMediaRoute = SiteMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteProjectsRoute = SiteProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteSenatorialAgendaRoute = SiteSenatorialAgendaRouteImport.update({
+  id: '/senatorial-agenda',
+  path: '/senatorial-agenda',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteTrackRoute = SiteTrackRouteImport.update({
+  id: '/track',
+  path: '/track',
+  getParentRoute: () => SiteRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminComplaintsRoute = AdminComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNewsRoute = AdminNewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProjectsRoute = AdminProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin_/login',
+  path: '/admin/login',
   getParentRoute: () => rootRouteImport,
+} as any)
+const SiteNewsIndexRoute = SiteNewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteNewsSlugRoute = SiteNewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => SiteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof SiteIndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/about': typeof SiteAboutRoute
+  '/complaints': typeof SiteComplaintsRoute
+  '/contact': typeof SiteContactRoute
+  '/media': typeof SiteMediaRoute
+  '/projects': typeof SiteProjectsRoute
+  '/senatorial-agenda': typeof SiteSenatorialAgendaRoute
+  '/track': typeof SiteTrackRoute
+  '/admin/complaints': typeof AdminComplaintsRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/news/$slug': typeof SiteNewsSlugRoute
+  '/news/': typeof SiteNewsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/about': typeof SiteAboutRoute
+  '/complaints': typeof SiteComplaintsRoute
+  '/contact': typeof SiteContactRoute
+  '/media': typeof SiteMediaRoute
+  '/projects': typeof SiteProjectsRoute
+  '/senatorial-agenda': typeof SiteSenatorialAgendaRoute
+  '/track': typeof SiteTrackRoute
+  '/admin/complaints': typeof AdminComplaintsRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/': typeof SiteIndexRoute
+  '/admin': typeof AdminIndexRoute
+  '/news/$slug': typeof SiteNewsSlugRoute
+  '/news': typeof SiteNewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_site': typeof SiteRouteWithChildren
+  '/admin': typeof AdminRouteWithChildren
+  '/_site/about': typeof SiteAboutRoute
+  '/_site/complaints': typeof SiteComplaintsRoute
+  '/_site/contact': typeof SiteContactRoute
+  '/_site/media': typeof SiteMediaRoute
+  '/_site/projects': typeof SiteProjectsRoute
+  '/_site/senatorial-agenda': typeof SiteSenatorialAgendaRoute
+  '/_site/track': typeof SiteTrackRoute
+  '/admin/complaints': typeof AdminComplaintsRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/projects': typeof AdminProjectsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin_/login': typeof AdminLoginRoute
+  '/_site/': typeof SiteIndexRoute
+  '/admin/': typeof AdminIndexRoute
+  '/_site/news/$slug': typeof SiteNewsSlugRoute
+  '/_site/news/': typeof SiteNewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/about'
+    | '/complaints'
+    | '/contact'
+    | '/media'
+    | '/projects'
+    | '/senatorial-agenda'
+    | '/track'
+    | '/admin/complaints'
+    | '/admin/media'
+    | '/admin/news'
+    | '/admin/projects'
+    | '/admin/settings'
+    | '/admin/login'
+    | '/admin/'
+    | '/news/$slug'
+    | '/news/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/about'
+    | '/complaints'
+    | '/contact'
+    | '/media'
+    | '/projects'
+    | '/senatorial-agenda'
+    | '/track'
+    | '/admin/complaints'
+    | '/admin/media'
+    | '/admin/news'
+    | '/admin/projects'
+    | '/admin/settings'
+    | '/admin/login'
+    | '/'
+    | '/admin'
+    | '/news/$slug'
+    | '/news'
+  id:
+    | '__root__'
+    | '/_site'
+    | '/admin'
+    | '/_site/about'
+    | '/_site/complaints'
+    | '/_site/contact'
+    | '/_site/media'
+    | '/_site/projects'
+    | '/_site/senatorial-agenda'
+    | '/_site/track'
+    | '/admin/complaints'
+    | '/admin/media'
+    | '/admin/news'
+    | '/admin/projects'
+    | '/admin/settings'
+    | '/admin_/login'
+    | '/_site/'
+    | '/admin/'
+    | '/_site/news/$slug'
+    | '/_site/news/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  SiteRoute: typeof SiteRouteWithChildren
+  AdminRoute: typeof AdminRouteWithChildren
+  AdminLoginRoute: typeof AdminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_site': {
+      id: '/_site'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof SiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_site/': {
+      id: '/_site/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof SiteIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/about': {
+      id: '/_site/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof SiteAboutRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/complaints': {
+      id: '/_site/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof SiteComplaintsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/contact': {
+      id: '/_site/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof SiteContactRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/media': {
+      id: '/_site/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof SiteMediaRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/projects': {
+      id: '/_site/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof SiteProjectsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/senatorial-agenda': {
+      id: '/_site/senatorial-agenda'
+      path: '/senatorial-agenda'
+      fullPath: '/senatorial-agenda'
+      preLoaderRoute: typeof SiteSenatorialAgendaRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/track': {
+      id: '/_site/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof SiteTrackRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/complaints': {
+      id: '/admin/complaints'
+      path: '/complaints'
+      fullPath: '/admin/complaints'
+      preLoaderRoute: typeof AdminComplaintsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/news': {
+      id: '/admin/news'
+      path: '/news'
+      fullPath: '/admin/news'
+      preLoaderRoute: typeof AdminNewsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/projects': {
+      id: '/admin/projects'
+      path: '/projects'
+      fullPath: '/admin/projects'
+      preLoaderRoute: typeof AdminProjectsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin_/login': {
+      id: '/admin_/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_site/news/': {
+      id: '/_site/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof SiteNewsIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/news/$slug': {
+      id: '/_site/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof SiteNewsSlugRouteImport
+      parentRoute: typeof SiteRoute
     }
   }
 }
 
+interface SiteRouteChildren {
+  SiteAboutRoute: typeof SiteAboutRoute
+  SiteComplaintsRoute: typeof SiteComplaintsRoute
+  SiteContactRoute: typeof SiteContactRoute
+  SiteMediaRoute: typeof SiteMediaRoute
+  SiteProjectsRoute: typeof SiteProjectsRoute
+  SiteSenatorialAgendaRoute: typeof SiteSenatorialAgendaRoute
+  SiteTrackRoute: typeof SiteTrackRoute
+  SiteIndexRoute: typeof SiteIndexRoute
+  SiteNewsSlugRoute: typeof SiteNewsSlugRoute
+  SiteNewsIndexRoute: typeof SiteNewsIndexRoute
+}
+
+const SiteRouteChildren: SiteRouteChildren = {
+  SiteAboutRoute: SiteAboutRoute,
+  SiteComplaintsRoute: SiteComplaintsRoute,
+  SiteContactRoute: SiteContactRoute,
+  SiteMediaRoute: SiteMediaRoute,
+  SiteProjectsRoute: SiteProjectsRoute,
+  SiteSenatorialAgendaRoute: SiteSenatorialAgendaRoute,
+  SiteTrackRoute: SiteTrackRoute,
+  SiteIndexRoute: SiteIndexRoute,
+  SiteNewsSlugRoute: SiteNewsSlugRoute,
+  SiteNewsIndexRoute: SiteNewsIndexRoute,
+}
+
+const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
+
+interface AdminRouteChildren {
+  AdminComplaintsRoute: typeof AdminComplaintsRoute
+  AdminMediaRoute: typeof AdminMediaRoute
+  AdminNewsRoute: typeof AdminNewsRoute
+  AdminProjectsRoute: typeof AdminProjectsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminComplaintsRoute: AdminComplaintsRoute,
+  AdminMediaRoute: AdminMediaRoute,
+  AdminNewsRoute: AdminNewsRoute,
+  AdminProjectsRoute: AdminProjectsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  SiteRoute: SiteRouteWithChildren,
+  AdminRoute: AdminRouteWithChildren,
+  AdminLoginRoute: AdminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
