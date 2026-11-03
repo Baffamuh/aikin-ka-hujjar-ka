@@ -10,32 +10,152 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SiteRouteImport } from './routes/_site'
+import { Route as SiteIndexRouteImport } from './routes/_site/index'
+import { Route as SiteAboutRouteImport } from './routes/_site/about'
+import { Route as SiteComplaintsRouteImport } from './routes/_site/complaints'
+import { Route as SiteContactRouteImport } from './routes/_site/contact'
+import { Route as SiteMediaRouteImport } from './routes/_site/media'
+import { Route as SiteProjectsRouteImport } from './routes/_site/projects'
+import { Route as SiteSenatorialAgendaRouteImport } from './routes/_site/senatorial-agenda'
+import { Route as SiteTrackRouteImport } from './routes/_site/track'
+import { Route as SiteNewsIndexRouteImport } from './routes/_site/news.index'
+import { Route as SiteNewsSlugRouteImport } from './routes/_site/news.$slug'
 
 const SiteRoute = SiteRouteImport.update({
   id: '/_site',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteIndexRoute = SiteIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteAboutRoute = SiteAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteComplaintsRoute = SiteComplaintsRouteImport.update({
+  id: '/complaints',
+  path: '/complaints',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteContactRoute = SiteContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteMediaRoute = SiteMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteProjectsRoute = SiteProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteSenatorialAgendaRoute = SiteSenatorialAgendaRouteImport.update({
+  id: '/senatorial-agenda',
+  path: '/senatorial-agenda',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteTrackRoute = SiteTrackRouteImport.update({
+  id: '/track',
+  path: '/track',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteNewsIndexRoute = SiteNewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteNewsSlugRoute = SiteNewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => SiteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof SiteRoute
+  '/': typeof SiteIndexRoute
+  '/about': typeof SiteAboutRoute
+  '/complaints': typeof SiteComplaintsRoute
+  '/contact': typeof SiteContactRoute
+  '/media': typeof SiteMediaRoute
+  '/projects': typeof SiteProjectsRoute
+  '/senatorial-agenda': typeof SiteSenatorialAgendaRoute
+  '/track': typeof SiteTrackRoute
+  '/news/$slug': typeof SiteNewsSlugRoute
+  '/news/': typeof SiteNewsIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof SiteRoute
+  '/about': typeof SiteAboutRoute
+  '/complaints': typeof SiteComplaintsRoute
+  '/contact': typeof SiteContactRoute
+  '/media': typeof SiteMediaRoute
+  '/projects': typeof SiteProjectsRoute
+  '/senatorial-agenda': typeof SiteSenatorialAgendaRoute
+  '/track': typeof SiteTrackRoute
+  '/': typeof SiteIndexRoute
+  '/news/$slug': typeof SiteNewsSlugRoute
+  '/news': typeof SiteNewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_site': typeof SiteRoute
+  '/_site': typeof SiteRouteWithChildren
+  '/_site/about': typeof SiteAboutRoute
+  '/_site/complaints': typeof SiteComplaintsRoute
+  '/_site/contact': typeof SiteContactRoute
+  '/_site/media': typeof SiteMediaRoute
+  '/_site/projects': typeof SiteProjectsRoute
+  '/_site/senatorial-agenda': typeof SiteSenatorialAgendaRoute
+  '/_site/track': typeof SiteTrackRoute
+  '/_site/': typeof SiteIndexRoute
+  '/_site/news/$slug': typeof SiteNewsSlugRoute
+  '/_site/news/': typeof SiteNewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/complaints'
+    | '/contact'
+    | '/media'
+    | '/projects'
+    | '/senatorial-agenda'
+    | '/track'
+    | '/news/$slug'
+    | '/news/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_site'
+  to:
+    | '/about'
+    | '/complaints'
+    | '/contact'
+    | '/media'
+    | '/projects'
+    | '/senatorial-agenda'
+    | '/track'
+    | '/'
+    | '/news/$slug'
+    | '/news'
+  id:
+    | '__root__'
+    | '/_site'
+    | '/_site/about'
+    | '/_site/complaints'
+    | '/_site/contact'
+    | '/_site/media'
+    | '/_site/projects'
+    | '/_site/senatorial-agenda'
+    | '/_site/track'
+    | '/_site/'
+    | '/_site/news/$slug'
+    | '/_site/news/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  SiteRoute: typeof SiteRoute
+  SiteRoute: typeof SiteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -47,11 +167,109 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_site/': {
+      id: '/_site/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof SiteIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/about': {
+      id: '/_site/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof SiteAboutRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/complaints': {
+      id: '/_site/complaints'
+      path: '/complaints'
+      fullPath: '/complaints'
+      preLoaderRoute: typeof SiteComplaintsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/contact': {
+      id: '/_site/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof SiteContactRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/media': {
+      id: '/_site/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof SiteMediaRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/projects': {
+      id: '/_site/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof SiteProjectsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/senatorial-agenda': {
+      id: '/_site/senatorial-agenda'
+      path: '/senatorial-agenda'
+      fullPath: '/senatorial-agenda'
+      preLoaderRoute: typeof SiteSenatorialAgendaRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/track': {
+      id: '/_site/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof SiteTrackRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/news/': {
+      id: '/_site/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof SiteNewsIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/news/$slug': {
+      id: '/_site/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof SiteNewsSlugRouteImport
+      parentRoute: typeof SiteRoute
+    }
   }
 }
 
+interface SiteRouteChildren {
+  SiteAboutRoute: typeof SiteAboutRoute
+  SiteComplaintsRoute: typeof SiteComplaintsRoute
+  SiteContactRoute: typeof SiteContactRoute
+  SiteMediaRoute: typeof SiteMediaRoute
+  SiteProjectsRoute: typeof SiteProjectsRoute
+  SiteSenatorialAgendaRoute: typeof SiteSenatorialAgendaRoute
+  SiteTrackRoute: typeof SiteTrackRoute
+  SiteIndexRoute: typeof SiteIndexRoute
+  SiteNewsSlugRoute: typeof SiteNewsSlugRoute
+  SiteNewsIndexRoute: typeof SiteNewsIndexRoute
+}
+
+const SiteRouteChildren: SiteRouteChildren = {
+  SiteAboutRoute: SiteAboutRoute,
+  SiteComplaintsRoute: SiteComplaintsRoute,
+  SiteContactRoute: SiteContactRoute,
+  SiteMediaRoute: SiteMediaRoute,
+  SiteProjectsRoute: SiteProjectsRoute,
+  SiteSenatorialAgendaRoute: SiteSenatorialAgendaRoute,
+  SiteTrackRoute: SiteTrackRoute,
+  SiteIndexRoute: SiteIndexRoute,
+  SiteNewsSlugRoute: SiteNewsSlugRoute,
+  SiteNewsIndexRoute: SiteNewsIndexRoute,
+}
+
+const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  SiteRoute: SiteRoute,
+  SiteRoute: SiteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
