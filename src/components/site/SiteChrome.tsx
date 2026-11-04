@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About IMBA" },
+  { to: "/achievements", label: "Achievements" },
   { to: "/projects", label: "Track Record" },
   { to: "/senatorial-agenda", label: "Agenda" },
   { to: "/news", label: "News" },

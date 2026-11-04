@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { PageHeader } from "@/components/site/SiteChrome";
+import { EvidenceGallery } from "@/components/site/EvidenceGallery";
 import { mediaQuery, MEDIA_CATEGORIES, type MediaItem } from "@/lib/site";
 
 export const Route = createFileRoute("/_site/media")({
@@ -30,7 +31,12 @@ function Media() {
   return (
     <>
       <PageHeader eyebrow="Media Centre" title="Photo & video gallery" />
+      <section className="mx-auto max-w-7xl px-4 pt-10">
+        <h2 className="text-2xl font-semibold">Project verification evidence</h2>
+        <div className="mt-2"><EvidenceGallery /></div>
+      </section>
       <section className="mx-auto max-w-7xl px-4 py-10">
+        <h2 className="mb-4 text-2xl font-semibold">Campaign & community photos</h2>
         <div className="flex flex-wrap gap-2">
           {["All", ...MEDIA_CATEGORIES].map((c) => (
             <button key={c} onClick={() => setCat(c)} className={`rounded-full border px-4 py-1.5 text-sm ${cat === c ? "border-primary bg-primary text-primary-foreground" : "bg-card hover:bg-muted"}`}>{c}</button>

@@ -13,6 +13,7 @@ import { Route as SiteRouteImport } from './routes/_site'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as SiteIndexRouteImport } from './routes/_site/index'
 import { Route as SiteAboutRouteImport } from './routes/_site/about'
+import { Route as SiteAchievementsRouteImport } from './routes/_site/achievements'
 import { Route as SiteComplaintsRouteImport } from './routes/_site/complaints'
 import { Route as SiteContactRouteImport } from './routes/_site/contact'
 import { Route as SiteMediaRouteImport } from './routes/_site/media'
@@ -46,6 +47,11 @@ const SiteIndexRoute = SiteIndexRouteImport.update({
 const SiteAboutRoute = SiteAboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteAchievementsRoute = SiteAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
   getParentRoute: () => SiteRoute,
 } as any)
 const SiteComplaintsRoute = SiteComplaintsRouteImport.update({
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/': typeof SiteIndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/about': typeof SiteAboutRoute
+  '/achievements': typeof SiteAchievementsRoute
   '/complaints': typeof SiteComplaintsRoute
   '/contact': typeof SiteContactRoute
   '/media': typeof SiteMediaRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/about': typeof SiteAboutRoute
+  '/achievements': typeof SiteAchievementsRoute
   '/complaints': typeof SiteComplaintsRoute
   '/contact': typeof SiteContactRoute
   '/media': typeof SiteMediaRoute
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/_site': typeof SiteRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
   '/_site/about': typeof SiteAboutRoute
+  '/_site/achievements': typeof SiteAchievementsRoute
   '/_site/complaints': typeof SiteComplaintsRoute
   '/_site/contact': typeof SiteContactRoute
   '/_site/media': typeof SiteMediaRoute
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/about'
+    | '/achievements'
     | '/complaints'
     | '/contact'
     | '/media'
@@ -209,6 +219,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
+    | '/achievements'
     | '/complaints'
     | '/contact'
     | '/media'
@@ -230,6 +241,7 @@ export interface FileRouteTypes {
     | '/_site'
     | '/admin'
     | '/_site/about'
+    | '/_site/achievements'
     | '/_site/complaints'
     | '/_site/contact'
     | '/_site/media'
@@ -282,6 +294,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof SiteAboutRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/achievements': {
+      id: '/_site/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof SiteAchievementsRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/complaints': {
@@ -394,6 +413,7 @@ declare module '@tanstack/react-router' {
 
 interface SiteRouteChildren {
   SiteAboutRoute: typeof SiteAboutRoute
+  SiteAchievementsRoute: typeof SiteAchievementsRoute
   SiteComplaintsRoute: typeof SiteComplaintsRoute
   SiteContactRoute: typeof SiteContactRoute
   SiteMediaRoute: typeof SiteMediaRoute
@@ -407,6 +427,7 @@ interface SiteRouteChildren {
 
 const SiteRouteChildren: SiteRouteChildren = {
   SiteAboutRoute: SiteAboutRoute,
+  SiteAchievementsRoute: SiteAchievementsRoute,
   SiteComplaintsRoute: SiteComplaintsRoute,
   SiteContactRoute: SiteContactRoute,
   SiteMediaRoute: SiteMediaRoute,

@@ -5,6 +5,7 @@ import { ArrowRight, Megaphone, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ApcBadge, ContestBadge } from "@/components/site/SiteChrome";
 import { ProjectCard } from "@/components/site/ProjectCard";
+import { EvidenceGallery } from "@/components/site/EvidenceGallery";
 import { LGAS, PORTRAIT, POSTER, CAMPAIGN_POSTER, newsQuery, projectsQuery, settingsQuery } from "@/lib/site";
 
 export const Route = createFileRoute("/_site/")({
@@ -91,6 +92,19 @@ function Home() {
           {shown.map((p) => <ProjectCard key={p.id} p={p} />)}
         </div>
       </section>
+
+      <section className="mx-auto max-w-7xl px-4 pt-20">
+        <div className="flex flex-col justify-between gap-2 md:flex-row md:items-end">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Hujja · Photo proof</p>
+            <h2 className="mt-1 text-3xl font-semibold">Schools, water, power, health — on the ground</h2>
+          </div>
+          <Link to="/achievements" className="text-sm font-medium text-primary">See all achievements →</Link>
+        </div>
+        <EvidenceGallery limit={8} />
+      </section>
+
+
 
       <section className="mx-auto mt-20 grid max-w-7xl gap-10 px-4 md:grid-cols-2">
         <img src={POSTER} alt="Aikin Ka Hujjar Ka project evidence" className="w-full rounded-2xl object-cover shadow-elegant md:max-h-[560px]" />
