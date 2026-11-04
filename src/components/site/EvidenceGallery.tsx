@@ -8,7 +8,7 @@ export function EvidenceGallery({ limit }: { limit?: number }) {
   const all = EVIDENCE.filter((e) => sector === "All" || e.sector === sector);
   const list = limit ? all.slice(0, limit) : all;
   const used = ["All", ...SECTORS.filter((s) => EVIDENCE.some((e) => e.sector === s))];
-  const open: Evidence | null = idx === null ? null : list[idx];
+  const open: Evidence | null = idx === null ? null : (list[idx] ?? null);
   const step = (d: number) => setIdx((i) => (i === null ? i : (i + d + list.length) % list.length));
 
   return (
