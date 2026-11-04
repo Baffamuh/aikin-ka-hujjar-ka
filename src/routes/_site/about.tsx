@@ -33,7 +33,8 @@ function About() {
         </div>
         <div className="space-y-6 text-base leading-relaxed text-foreground/90">
           <h2 className="text-3xl font-semibold">Background & public service</h2>
-          <p>Hon. Ibrahim Mohammed Baba, popularly known as IMBA, is a son of Katagum in Bauchi State and a committed public servant whose politics is built on one idea: representation must be visible on the ground.</p>
+          <p>Hon. Ibrahim Mohammed Baba, popularly known as IMBA — fondly called <strong>Jikan Nanna</strong> and titled <strong>Barden Gabas</strong> — is a son of Katagum in Bauchi State and a committed public servant whose politics is built on one idea: representation must be visible on the ground.</p>
+          <p>Beyond education, his tenure brought hospital equipment and patient support, boreholes, transformers and solar streetlights, culverts and road repairs, the Civil Defence Training College in Azare, skills training and jobs for youths, and tools, grants and livestock for farmers, traders and women.</p>
           <p>Elected to the House of Representatives in 2015 to represent Katagum Federal Constituency in the 8th National Assembly, he made education the centrepiece of his mandate. Between 2015 and 2019 his constituency interventions delivered more than 50 classrooms across primary schools, junior secondary schools and modern Islamiyya schools, three ICT centres, three free student transit buses and over 10,000 primary school textbooks.</p>
           <h3 className="pt-2 text-2xl font-semibold">Stewardship in the 8th National Assembly</h3>
           <p>In the House, he used constituency project allocations, motions and oversight to bring federal resources home — prioritising projects that communities could see, use and verify. His record became the campaign theme he carries today: <em className="font-display text-primary">“Aikin Ka Hujjar Ka”</em> — your work is your proof.</p>
