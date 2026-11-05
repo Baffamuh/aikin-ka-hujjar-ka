@@ -14,3 +14,4 @@
 - Citizens never read/write `complaints` directly: inserts go through `submit_complaint` RPC and public tracking through `track_complaint` RPC (security definer, returns no personal details).
 - The first account created becomes admin via the `handle_first_admin` trigger; later signups get no role.
 - Admin uploads go to the private `site-media` bucket and are stored as long-lived signed URLs (workspace blocks public buckets).
+- Site photos are served from `public/media/` (not `/__l5e` asset URLs) because those only resolve on Lovable hosting and break on Vercel.
