@@ -65,6 +65,45 @@ export type Database = {
         }
         Relationships: []
       }
+      events: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_type: string
+          id: string
+          image_url: string | null
+          lga: string
+          published: boolean
+          starts_at: string
+          title: string
+          venue: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_type?: string
+          id?: string
+          image_url?: string | null
+          lga?: string
+          published?: boolean
+          starts_at: string
+          title: string
+          venue?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_type?: string
+          id?: string
+          image_url?: string | null
+          lga?: string
+          published?: boolean
+          starts_at?: string
+          title?: string
+          venue?: string | null
+        }
+        Relationships: []
+      }
       media_items: {
         Row: {
           caption: string | null
