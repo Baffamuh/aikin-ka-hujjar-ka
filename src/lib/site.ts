@@ -21,12 +21,12 @@ export const PROJECT_CATEGORIES = [
 export const NEWS_CATEGORIES = ["Community Engagement", "Political Meetings", "Rallies", "Project Inspections", "Press Statements"];
 export const MEDIA_CATEGORIES = ["Official Portraits", "Community Engagements", "Rallies", "Project Verification Evidence"];
 
-export const PORTRAIT = "/__l5e/assets-v1/ad4934d7-a136-497f-b412-8c591124853e/imba_seated_portrait.jpg";
-export const RALLY = "/__l5e/assets-v1/72843012-2dd4-4f8f-b4ff-6348f056d97c/imba_rally_procession.jpg";
-export const SPEAKING = "/__l5e/assets-v1/ca3f6aa0-0fce-4227-92cf-8a066a64b56b/imba_speaking_rally.jpg";
-export const POSTER = "/__l5e/assets-v1/9592dee4-f970-4ee1-9c57-a6dcd390bbbb/imba_achievements_poster.jpg";
-export const CAMPAIGN_POSTER = "/__l5e/assets-v1/9619b479-9275-4877-982d-cf388198b532/imba_2027_senate_poster.jpg";
-export const NOTES = "/__l5e/assets-v1/5ec2cea5-a94d-4abf-be4f-1268e823edc8/imba_seated_notes.jpg";
+export const PORTRAIT = "/media/imba_seated_portrait.jpg";
+export const RALLY = "/media/imba_rally_procession.jpg";
+export const SPEAKING = "/media/imba_speaking_rally.jpg";
+export const POSTER = "/media/imba_achievements_poster.jpg";
+export const CAMPAIGN_POSTER = "/media/imba_2027_senate_poster.jpg";
+export const NOTES = "/media/imba_seated_notes.jpg";
 
 export function slugify(s: string) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 80);
@@ -74,3 +74,15 @@ export function statusTone(status: string) {
     default: return "bg-card text-foreground border";
   }
 }
+
+export type EventItem = Database["public"]["Tables"]["events"]["Row"];
+export const EVENT_TYPES = ["Campaign Rally", "Town Hall Meeting", "Community Visit", "Project Inspection", "Political Meeting", "Other"];
+export const eventsQuery = () =>
+  queryOptions({
+    queryKey: ["events"],
+    queryFn: () =>
+      unwrap<EventItem[]>(
+        supabase.from("events").select("*").eq("published", true)
+          .gte("starts_at", new Date(Date.now() - 864e5).toISOString()).order("starts_at"),
+      ),
+  });

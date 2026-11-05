@@ -29,6 +29,13 @@
       "when": 1793712511354,
       "tag": "0003_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793859100470,
+      "tag": "0004_self_hosted_photos_and_events",
+      "breakpoints": true
     }
   ]
 }
