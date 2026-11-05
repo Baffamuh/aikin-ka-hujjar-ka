@@ -1,4 +1,3 @@
-import apcLogo from "@/assets/apc_logo.png.asset.json";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
@@ -20,7 +19,7 @@ const NAV = [
 export function ApcBadge({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold-foreground ${className}`}>
-      <img src={apcLogo.url} alt="" className="h-4 w-4 rounded-full bg-card object-contain" /> APC
+      <img src={"/media/apc_logo.png"} alt="" className="h-4 w-4 rounded-full bg-card object-contain" /> APC
     </span>
   );
 }
@@ -63,7 +62,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={apcLogo.url} alt="APC logo" className="h-10 w-10 rounded-full bg-card object-contain" />
+          <img src={"/media/apc_logo.png"} alt="APC logo" className="h-10 w-10 rounded-full bg-card object-contain" />
           <span className="hidden leading-tight sm:block">
             <span className="block font-display text-base font-semibold">Hon. Ibrahim M. Baba</span>
             <span className="block text-xs text-muted-foreground">APC · Bauchi North</span>

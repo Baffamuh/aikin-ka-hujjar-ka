@@ -1,6 +1,5 @@
 // Photo evidence and reported achievements of Hon. IMBA (2015–2019).
-const files = import.meta.glob("../assets/evidence/*.asset.json", { eager: true, import: "default" }) as Record<string, { url: string }>;
-const img = (id: string) => files[`../assets/evidence/ev_${id}.jpg.asset.json`]?.url ?? "";
+const img = (id: string) => `/media/ev_${id}.jpg`;
 
 export const SECTORS = [
   "Education",
