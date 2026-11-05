@@ -74,3 +74,15 @@ export function statusTone(status: string) {
     default: return "bg-card text-foreground border";
   }
 }
+
+export type EventItem = Database["public"]["Tables"]["events"]["Row"];
+export const EVENT_TYPES = ["Campaign Rally", "Town Hall Meeting", "Community Visit", "Project Inspection", "Political Meeting", "Other"];
+export const eventsQuery = () =>
+  queryOptions({
+    queryKey: ["events"],
+    queryFn: () =>
+      unwrap<EventItem[]>(
+        supabase.from("events").select("*").eq("published", true)
+          .gte("starts_at", new Date(Date.now() - 864e5).toISOString()).order("starts_at"),
+      ),
+  });
