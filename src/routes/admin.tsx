@@ -1,7 +1,7 @@
 import { createFileRoute, Link, Outlet, redirect, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { FolderKanban, Image, LayoutDashboard, LogOut, Menu, MessageSquareWarning, Newspaper, Settings } from "lucide-react";
+import { CalendarDays, PenSquare, FolderKanban, Image, LayoutDashboard, LogOut, Menu, MessageSquareWarning, Newspaper, Settings } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +23,8 @@ export const Route = createFileRoute("/admin")({
 
 const NAV = [
   { to: "/admin", label: "Overview", icon: LayoutDashboard },
+  { to: "/admin/post", label: "Create Post", icon: PenSquare },
+  { to: "/admin/events", label: "Events & Rallies", icon: CalendarDays },
   { to: "/admin/complaints", label: "Complaints Desk", icon: MessageSquareWarning },
   { to: "/admin/projects", label: "Projects", icon: FolderKanban },
   { to: "/admin/news", label: "News", icon: Newspaper },

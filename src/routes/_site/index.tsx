@@ -5,6 +5,7 @@ import { ArrowRight, Megaphone, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ApcBadge, ContestBadge } from "@/components/site/SiteChrome";
 import { ProjectCard } from "@/components/site/ProjectCard";
+import { UpcomingEvents } from "@/components/site/UpcomingEvents";
 import { EvidenceGallery } from "@/components/site/EvidenceGallery";
 import { LGAS, PORTRAIT, POSTER, CAMPAIGN_POSTER, newsQuery, projectsQuery, settingsQuery } from "@/lib/site";
 
@@ -118,6 +119,8 @@ function Home() {
           <Button asChild className="mt-6"><Link to="/senatorial-agenda">Read the agenda</Link></Button>
         </div>
       </section>
+
+      <UpcomingEvents />
 
       <section className="mx-auto max-w-7xl px-4 pt-20">
         <div className="flex items-end justify-between">
