@@ -19,7 +19,7 @@ export type Field = {
   full?: boolean;
 };
 
-type Table = "projects" | "news_articles" | "media_items";
+type Table = "projects" | "news_articles" | "media_items" | "events";
 
 export async function uploadImage(file: File): Promise<string> {
   const path = `${Date.now()}-${slugify(file.name.replace(/\.[^.]+$/, ""))}.${file.name.split(".").pop()}`;

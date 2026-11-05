@@ -17,8 +17,8 @@ function QuickPost() {
   const [kind, setKind] = useState<"news" | "event">("news");
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState(NEWS_CATEGORIES[0]);
-  const [type, setType] = useState(EVENT_TYPES[0]);
+  const [category, setCategory] = useState<string>(NEWS_CATEGORIES[0] ?? "Community Engagement");
+  const [type, setType] = useState<string>(EVENT_TYPES[0] ?? "Campaign Rally");
   const [when, setWhen] = useState("");
   const [venue, setVenue] = useState("");
   const [lga, setLga] = useState<string>(LGAS[0]);
@@ -28,9 +28,9 @@ function QuickPost() {
 
   async function publish() {
     const body = text.trim();
-    const t = (title.trim() || body.split("\n")[0]).slice(0, 120);
-    if (!t) return toast.error("Write something first");
-    if (kind === "event" && !when) return toast.error("Choose the event date and time");
+    const t = (title.trim() || body.split("\n")[0] || "").slice(0, 120);
+    if (!t) { toast.error("Write something first"); return; }
+    if (kind === "event" && !when) { toast.error("Choose the event date and time"); return; }
     setBusy(true);
     try {
       const image_url = file ? await uploadImage(file) : null;
