@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { WhatsAppShare } from "@/components/site/Extras";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { PageHeader } from "@/components/site/SiteChrome";
@@ -38,6 +39,7 @@ function NewsList() {
               <h2 className="mt-4 text-2xl font-semibold leading-snug group-hover:text-primary md:text-3xl">{list[0].title}</h2>
               <p className="mt-3 text-muted-foreground">{list[0].excerpt}</p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-primary">{new Date(list[0].published_at).toLocaleDateString("en-NG", { dateStyle: "long" })} · Read story →</p>
+              <div className="mt-4"><WhatsAppShare title={list[0].title} path={`/news/${list[0].slug}`} /></div>
             </div>
           </Link>
         )}
@@ -49,6 +51,7 @@ function NewsList() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">{n.category} · {new Date(n.published_at).toLocaleDateString("en-NG", { dateStyle: "medium" })}</p>
                 <h3 className="mt-1 text-lg font-semibold group-hover:text-primary">{n.title}</h3>
                 <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{n.excerpt}</p>
+                <div className="mt-4"><WhatsAppShare title={n.title} path={`/news/${n.slug}`} /></div>
               </div>
             </Link>
           ))}
