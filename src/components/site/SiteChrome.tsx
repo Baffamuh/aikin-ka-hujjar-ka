@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X, MapPin, Phone, Mail } from "lucide-react";
 import { settingsQuery } from "@/lib/site";
 import { Button } from "@/components/ui/button";
+import { useLang } from "@/lib/i18n";
+import { LangToggle } from "@/components/site/Extras";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -58,6 +60,7 @@ function ThemeToggle() {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { t } = useLang();
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4">
@@ -73,13 +76,14 @@ export function SiteHeader() {
             <Link key={n.to} to={n.to} activeOptions={{ exact: n.to === "/" }}
               className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
               activeProps={{ className: "text-primary" }}>
-              {n.label}
+              {t(n.label)}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-1">
+          <LangToggle />
           <ThemeToggle />
-          <Button asChild size="sm" className="hidden sm:inline-flex"><Link to="/complaints">Submit Complaint</Link></Button>
+          <Button asChild size="sm" className="hidden sm:inline-flex"><Link to="/complaints">{t("Submit Complaint")}</Link></Button>
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Menu" onClick={() => setOpen(!open)}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -89,7 +93,7 @@ export function SiteHeader() {
         <nav className="border-t bg-background px-4 py-3 lg:hidden">
           {[...NAV, { to: "/complaints", label: "Submit Complaint" }, { to: "/track", label: "Track Request" }].map((n) => (
             <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="block rounded-md px-3 py-2.5 text-sm font-medium hover:bg-muted">
-              {n.label}
+              {t(n.label)}
             </Link>
           ))}
         </nav>
