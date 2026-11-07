@@ -20,7 +20,9 @@ export const Route = createFileRoute("/_site/media")({
 
 function embed(url: string) {
   const m = url.match(/(?:youtu\.be\/|v=)([\w-]{11})/);
-  return m ? `https://www.youtube.com/embed/${m[1]}` : url;
+  if (m) return `https://www.youtube.com/embed/${m[1]}`;
+  if (/facebook\.com|fb\.watch/.test(url)) return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=560`;
+  return url;
 }
 
 function Media() {
@@ -31,6 +33,21 @@ function Media() {
   return (
     <>
       <PageHeader eyebrow="Media Centre" title="Photo & video gallery" />
+      {data.some((m) => m.media_type === "video") && (
+        <section className="mx-auto max-w-7xl px-4 pt-10">
+          <h2 className="text-2xl font-semibold">Videos</h2>
+          <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {data.filter((m) => m.media_type === "video").map((m) => (
+              <figure key={m.id} className="overflow-hidden rounded-2xl border bg-card">
+                <div className={/facebook|fb\.watch/.test(m.url) ? "aspect-[9/16] w-full" : "aspect-video w-full"}>
+                  <iframe src={embed(m.url)} title={m.title} className="h-full w-full" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowFullScreen />
+                </div>
+                <figcaption className="p-3 text-sm font-semibold">{m.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
       <section className="mx-auto max-w-7xl px-4 pt-10">
         <h2 className="text-2xl font-semibold">Project verification evidence</h2>
         <div className="mt-2"><EvidenceGallery /></div>
