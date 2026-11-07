@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
+import { WhatsAppShare } from "@/components/site/Extras";
 import { newsBySlugQuery } from "@/lib/site";
 
 export const Route = createFileRoute("/_site/news/$slug")({
@@ -30,6 +31,7 @@ function Article() {
       <Link to="/news" className="inline-flex items-center gap-1 text-sm text-primary"><ArrowLeft className="h-4 w-4" />All news</Link>
       <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-primary">{n.category} · {new Date(n.published_at).toLocaleDateString("en-NG", { dateStyle: "long" })}</p>
       <h1 className="mt-2 text-4xl font-semibold leading-tight">{n.title}</h1>
+      <div className="mt-4"><WhatsAppShare title={n.title} path={`/news/${n.slug}`} /></div>
       {n.excerpt && <p className="mt-4 text-lg text-muted-foreground">{n.excerpt}</p>}
       {n.image_url && <img src={n.image_url} alt={n.title} className="mt-8 w-full rounded-2xl object-cover" />}
       <div className="mt-8 space-y-4 whitespace-pre-line leading-relaxed">{n.body}</div>

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { ApcBadge, ContestBadge } from "@/components/site/SiteChrome";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { UpcomingEvents } from "@/components/site/UpcomingEvents";
+import { ElectionCountdown } from "@/components/site/Extras";
+import { useLang } from "@/lib/i18n";
 import { EvidenceGallery } from "@/components/site/EvidenceGallery";
 import { LGAS, PORTRAIT, POSTER, CAMPAIGN_POSTER, newsQuery, projectsQuery, settingsQuery } from "@/lib/site";
 
@@ -34,6 +36,7 @@ function Home() {
   const { data: projects = [] } = useQuery(projectsQuery());
   const { data: news = [] } = useQuery(newsQuery());
   const [cat, setCat] = useState("All");
+  const { t } = useLang();
   const completed = projects.filter((p) => p.tenure === "completed");
   const cats = ["All", ...Array.from(new Set(completed.map((p) => p.category)))];
   const shown = completed.filter((p) => cat === "All" || p.category === cat).slice(0, 6);
@@ -51,8 +54,8 @@ function Home() {
               Former Member, House of Representatives for Katagum Federal Constituency (2015–2019). Classrooms, ICT centres, school buses and textbooks — delivered, documented, and open to verification.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90"><Link to="/projects">View Track Record <ArrowRight className="ml-1 h-4 w-4" /></Link></Button>
-              <Button asChild size="lg" variant="outline" className="border-on-deep/40 bg-transparent text-on-deep hover:bg-on-deep/10 hover:text-on-deep"><Link to="/complaints">Submit a Complaint/Request</Link></Button>
+              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90"><Link to="/projects">{t("View Track Record")} <ArrowRight className="ml-1 h-4 w-4" /></Link></Button>
+              <Button asChild size="lg" variant="outline" className="border-on-deep/40 bg-transparent text-on-deep hover:bg-on-deep/10 hover:text-on-deep"><Link to="/complaints">{t("Submit a Complaint/Request")}</Link></Button>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-sm">
@@ -81,6 +84,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <ElectionCountdown />
 
       <section className="mx-auto max-w-7xl px-4 pt-20">
         <h2 className="text-3xl font-semibold">Featured constituency projects</h2>
@@ -124,7 +129,7 @@ function Home() {
 
       <section className="mx-auto max-w-7xl px-4 pt-20">
         <div className="flex items-end justify-between">
-          <h2 className="text-3xl font-semibold">Latest activities & news</h2>
+          <h2 className="text-3xl font-semibold">{t("Latest activities & news")}</h2>
           <Link to="/news" className="text-sm font-medium text-primary">All news →</Link>
         </div>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
