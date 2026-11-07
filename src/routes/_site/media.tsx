@@ -29,7 +29,7 @@ function Media() {
   const { data = [] } = useQuery(mediaQuery());
   const [cat, setCat] = useState("All");
   const [open, setOpen] = useState<MediaItem | null>(null);
-  const list = data.filter((m) => cat === "All" || m.category === cat);
+  const list = data.filter((m) => m.media_type !== "video" && (cat === "All" || m.category === cat));
   return (
     <>
       <PageHeader eyebrow="Media Centre" title="Photo & video gallery" />
