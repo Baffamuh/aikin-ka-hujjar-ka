@@ -296,6 +296,26 @@ export type Database = {
     }
     Functions: {
       admin_exists: { Args: never; Returns: boolean }
+      get_site_settings: {
+        Args: never
+        Returns: {
+          email: string
+          hero_subtitle: string
+          hero_title: string
+          id: number
+          office_address: string
+          office_hours: string
+          phone: string
+          slogan: string
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "site_settings"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

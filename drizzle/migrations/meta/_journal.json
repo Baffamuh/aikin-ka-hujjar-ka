@@ -43,6 +43,13 @@
       "when": 1794089433035,
       "tag": "0005_sambuwal_news",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794141348327,
+      "tag": "0006_site_settings_via_function",
+      "breakpoints": true
     }
   ]
 }
