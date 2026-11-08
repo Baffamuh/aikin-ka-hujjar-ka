@@ -10,7 +10,7 @@ export const Route = createFileRoute("/_site/achievements")({
     meta: [
       { title: "Achievements & Photo Proof — Hon. IMBA (2015–2019)" },
       { name: "description", content: "Schools, ICT centres, buses, boreholes, transformers, health support and empowerment delivered by Hon. Ibrahim Mohammed Baba, with photo evidence." },
-      { property: "og:title", content: "Nasarorin IMBA — Aikin Ka Hujjar Ka" },
+      { property: "og:title", content: "IMBA Achievements — Your Work Is Your Proof" },
       { property: "og:description", content: "The full record of IMBA's constituency delivery, sector by sector, with photos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -24,7 +24,7 @@ const ICONS = { Education: BookOpen, ICT: Monitor, Transport: Bus, Health: Heart
 function Achievements() {
   return (
     <>
-      <PageHeader eyebrow="Nasarorin IMBA · Jikan Nanna · Barden Gabas" title="Aikin Ka Hujjar Ka — the full record" intro="What Hon. Ibrahim Mohammed Baba delivered for Katagum Federal Constituency between 2015 and 2019, organised by sector and backed by photographs from the field." />
+      <PageHeader eyebrow="IMBA Achievements · Jikan Nanna · Barden Gabas" title="Your Work Is Your Proof — the full record" intro="What Hon. Ibrahim Mohammed Baba delivered for Katagum Federal Constituency between 2015 and 2019, organised by sector and backed by photographs from the field." />
       <section className="mx-auto max-w-7xl px-4 py-14">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {[["11", "School projects"], ["3", "ICT centres"], ["3", "Student buses"], [String(EVIDENCE.length), "Photo proofs"]].map(([n, l]) => (

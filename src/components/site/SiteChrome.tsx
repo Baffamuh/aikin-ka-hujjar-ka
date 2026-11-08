@@ -5,7 +5,6 @@ import { Menu, Moon, Sun, X, MapPin, Phone, Mail } from "lucide-react";
 import { settingsQuery } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
-import { LangToggle } from "@/components/site/Extras";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -81,7 +80,6 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-1">
-          <LangToggle />
           <ThemeToggle />
           <Button asChild size="sm" className="hidden sm:inline-flex"><Link to="/complaints">{t("Submit Complaint")}</Link></Button>
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Menu" onClick={() => setOpen(!open)}>
