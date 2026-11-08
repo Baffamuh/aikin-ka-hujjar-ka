@@ -61,7 +61,7 @@ export const mediaQuery = () =>
 export const settingsQuery = () =>
   queryOptions({
     queryKey: ["settings"],
-    queryFn: () => unwrap<Settings>(supabase.from("site_settings").select("*").eq("id", 1).single()),
+    queryFn: () => unwrap<Settings>(supabase.rpc("get_site_settings").single()),
   });
 
 export function statusTone(status: string) {
