@@ -3,7 +3,7 @@ import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
 
-const ELECTION = new Date("2027-02-20T08:00:00+01:00").getTime();
+const ELECTION = new Date("2027-01-16T08:00:00+01:00").getTime();
 
 export function LangToggle() {
   const { lang, setLang } = useLang();
@@ -57,7 +57,7 @@ export function ElectionCountdown() {
             </div>
           ))}
         </div>
-        <p className="mt-4 text-sm opacity-75">{t("National Assembly elections · 20 February 2027")}</p>
+        <p className="mt-4 text-sm opacity-75">{t("National Assembly elections · 16 January 2027")}</p>
       </div>
     </section>
   );

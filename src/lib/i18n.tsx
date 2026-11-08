@@ -20,7 +20,7 @@ const DICT = {
   Hours: "Awanni",
   Minutes: "Mintuna",
   Seconds: "Daƙiƙu",
-  "National Assembly elections · 20 February 2027": "Zaɓen 'Yan Majalisar Tarayya · 20 ga Fabrairu 2027",
+  "National Assembly elections · 16 January 2027": "Zaɓen 'Yan Majalisar Tarayya · 20 ga Fabrairu 2027",
   "Vote APC — Vote IMBA for Senate": "Zaɓi APC — Zaɓi IMBA a Majalisar Dattawa",
   "Share on WhatsApp": "Tura ta WhatsApp",
   "Latest activities & news": "Sabbin Ayyuka da Labarai",
@@ -33,7 +33,7 @@ const Ctx = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: "e
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
   useEffect(() => {
-    if (localStorage.getItem("imba-lang") === "ha") setLangState("ha");
+    localStorage.removeItem("imba-lang");
   }, []);
   const setLang = (l: Lang) => {
     setLangState(l);
